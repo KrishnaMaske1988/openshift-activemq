@@ -15,10 +15,10 @@ RUN set -x && \
     curl -s -S https://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz | tar xvz -C /opt && \
     ln -s /opt/$ACTIVEMQ $ACTIVEMQ_HOME && \
     cd $ACTIVEMQ_HOME/lib/optional && \
-    curl -O https://jdbc.postgresql.org/download/postgresql-$POSTGRES_JDBC_DRIVER_VERSION.jar && \
-    sed -i "s/mqtt/http/g" /opt/activemq/conf/activemq.xml && \
-    sed -i "s/1883/8080/g" /opt/activemq/conf/activemq.xml && \
+    curl -O https://jdbc.postgresql.org/download/postgresql-$POSTGRES_JDBC_DRIVER_VERSION.jar && \	
     useradd -r -M -d $ACTIVEMQ_HOME activemq && \
+	sed -i "s/mqtt/http/g" /opt/activemq/conf/activemq.xml && \
+	sed -i "s/1883/8080/g" /opt/activemq/conf/activemq.xml && \
     chown -R :0 /opt/$ACTIVEMQ && \
     chown -h :0 $ACTIVEMQ_HOME && \
     chmod go+rwX -R $ACTIVEMQ_HOME && \
