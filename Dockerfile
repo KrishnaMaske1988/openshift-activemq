@@ -15,7 +15,8 @@ RUN set -x && \
     curl -s -S https://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz | tar xvz -C /opt && \
     ln -s /opt/$ACTIVEMQ $ACTIVEMQ_HOME && \
     cd $ACTIVEMQ_HOME/lib/optional && \
-    curl -O https://jdbc.postgresql.org/download/postgresql-$POSTGRES_JDBC_DRIVER_VERSION.jar && \    
+    curl -O https://jdbc.postgresql.org/download/postgresql-$POSTGRES_JDBC_DRIVER_VERSION.jar && \
+    sed -i "s/<transportConnector name="ws" uri="ws://0.0.0.0:61614?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>/<transportConnector name="http" uri="http://0.0.0.0:8080?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>/g" /opt/activemq/conf/activemq.xml && \
     useradd -r -M -d $ACTIVEMQ_HOME activemq && \
     chown -R :0 /opt/$ACTIVEMQ && \
     chown -h :0 $ACTIVEMQ_HOME && \
