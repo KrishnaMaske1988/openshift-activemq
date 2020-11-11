@@ -39,7 +39,7 @@ objects:
           imagePullPolicy: Always
           name: openshift-activemq
           ports:
-          - containerPort: 8080
+          - containerPort: 8161
             protocol: TCP
           resources: {}
           terminationMessagePath: /dev/termination-log
@@ -110,8 +110,8 @@ objects:
     name: openshift-activemq
   spec:
     ports:    
-    - name: http
-      port: 8080
+    - name: 8161-tcp
+      port: 8161
       protocol: TCP
       targetPort: 8080
     selector:
@@ -127,7 +127,7 @@ objects:
     name: activemq
   spec:
     port:
-      targetPort: 8080
+      targetPort: 8161-tcp
     tls:
       insecureEdgeTerminationPolicy: Redirect
       termination: edge
