@@ -39,10 +39,6 @@ objects:
           imagePullPolicy: Always
           name: openshift-activemq
           ports:
-          - containerPort: 61616
-            protocol: TCP
-          - containerPort: 8161
-            protocol: TCP
           - containerPort: 8080
             protocol: TCP
           resources: {}
@@ -114,14 +110,6 @@ objects:
     name: openshift-activemq
   spec:
     ports:
-    - name: 8161-tcp
-      port: 8161
-      protocol: TCP
-      targetPort: 8161
-    - name: 61616-tcp
-      port: 61616
-      protocol: TCP
-      targetPort: 61616
     - name: 8080-http
       port: 8080
       protocol: TCP
