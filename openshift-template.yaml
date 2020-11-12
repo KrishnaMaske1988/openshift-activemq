@@ -135,7 +135,7 @@ objects:
   kind: Route
   metadata:
     labels:
-      app: openshift-activemq
+      app: openshift-activemqs
     name: activemq
   spec:
     port:
