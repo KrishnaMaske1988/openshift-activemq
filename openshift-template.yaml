@@ -110,10 +110,10 @@ objects:
     name: openshift-activemq
   spec:
     ports:
-    - name: 8080-http
+    - name: 8161-tcp
       port: 8161
       protocol: TCP
-      targetPort: 8080
+      targetPort: 8161
     selector:
       app: openshift-activemq
       deploymentconfig: openshift-activemq
@@ -127,7 +127,7 @@ objects:
     name: activemq
   spec:
     port:
-      targetPort: 8080-http
+      targetPort: 8161-tcp
     tls:
       insecureEdgeTerminationPolicy: Redirect
       termination: edge
