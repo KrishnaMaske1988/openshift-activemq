@@ -43,8 +43,6 @@ objects:
             protocol: TCP
           - containerPort: 8161
             protocol: TCP
-          - containerPort: 8080
-            protocol: HTTP 
           resources: {}
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
@@ -122,10 +120,6 @@ objects:
       port: 61616
       protocol: TCP
       targetPort: 61616
-    - name: 8080-htp
-      port: 8080
-      protocol: HTTP
-      targetPort: 8080
     selector:
       app: openshift-activemq
       deploymentconfig: openshift-activemq
